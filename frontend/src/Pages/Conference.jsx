@@ -10,10 +10,6 @@ function Conference() {
 	const [currentPage, setCurrentPage] = useState(null);
 	const [data, setData] = useState([]);
 
-	const [startDate, setStartDate] = useState(""); // e.g., "2024-08"
-	const [endDate, setEndDate] = useState(""); // e.g., "2024-12"
-	const [authorName, setAuthorName] = useState("");
-	const [impactFactor, setImpactFactor] = useState(0);
 	const [filters, setFilters] = useState({
 		startDate: "",
 		endDate: "",
