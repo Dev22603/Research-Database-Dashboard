@@ -19,12 +19,9 @@ function Conference() {
 
 	const handleFilter = (newFilter) => {
 		setFilters(newFilter);
-	};
-
-	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await fetchConferences(filters);
+				const response = await fetchConferences(newFilter);
 				console.log(response.data);
 				setData(response.data);
 			} catch (error) {
@@ -32,7 +29,7 @@ function Conference() {
 			}
 		};
 		fetchData();
-	}, [filters]);
+	};
 
 	const setPage = (page) => {
 		setCurrentPage(page);
