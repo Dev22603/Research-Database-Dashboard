@@ -14,7 +14,8 @@ function Conference() {
 		startDate: "",
 		endDate: "",
 		authorName: "",
-		impactFactor: 0,
+		impactFactorMin: 0,
+		impactFactorMax: 0.1,
 	});
 
 	const handleFilter = (newFilter) => {
@@ -67,14 +68,13 @@ function Conference() {
 		<div className="h-full w-full">
 			<Navbar Menu={toggleMenu} ref={navbarRef}></Navbar>
 			<div className="h-full w-full flex justify-around">
-				{/* Left Aligned Drawer */}
 				{menu && (
 					<LeftDrawer
 						ref={multiIconsRef}
 						toggleCurrentPage={setPage}
 						currentPageName={currentPage}
 						className="bg-gray-50 mr-10"
-					></LeftDrawer>
+					/>
 				)}
 				<div className="flex flex-col">
 					<FilterInput onFilterChange={handleFilter} />

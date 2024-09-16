@@ -5,7 +5,8 @@ function FilterInput({ onFilterChange }) {
 		startDate: "",
 		endDate: "",
 		authorName: "",
-		impactFactor: 0,
+		impactFactorMin: 0,
+		impactFactorMax: 0.1,
 	});
 
 	const handleInputChange = (e) => {
@@ -87,14 +88,14 @@ function FilterInput({ onFilterChange }) {
 						/>
 					</div>
 
-					<div className="flex flex-col justify-between items-center">
+					<div className="flex justify-between items-center">
 						<label
 							htmlFor="impactFactor"
 							className="mr-1 font-semibold text-lg"
 						>
 							Impact Factor:
 						</label>
-						<div className="flex flex-col justify-center items-center space-x-2">
+						<div className="flex flex-col justify-center items-center space-y-2">
 							<input
 								type="number"
 								name="minImpactFactor"
@@ -127,7 +128,52 @@ function FilterInput({ onFilterChange }) {
 						>
 							Indexing
 						</label>
-
+						<div className="flex flex-col  items-start ">
+							<label className="cursor-pointer">
+								<input
+									type="radio"
+									name="filterOption"
+									value="SCI"
+									checked={filters.filterOption === "SCI"}
+									onChange={handleInputChange}
+									className="mr-2 cursor-pointer"
+								/>
+								SCI
+							</label>
+							<label className="cursor-pointer">
+								<input
+									type="radio"
+									name="filterOption"
+									value="WOS"
+									checked={filters.filterOption === "WOS"}
+									onChange={handleInputChange}
+									className="mr-2 cursor-pointer"
+								/>
+								Web of Science
+							</label>
+							<label className="cursor-pointer">
+								<input
+									type="radio"
+									name="filterOption"
+									value="other"
+									checked={filters.filterOption === "other"}
+									onChange={handleInputChange}
+									className="mr-2 cursor-pointer"
+								/>
+								Other
+							</label>
+							<label className="cursor-pointer">
+								<input
+									type="radio"
+									name="filterOption"
+									value=""
+									checked={filters.filterOption === ""}
+									onChange={handleInputChange}
+									className="mr-2 cursor-pointer"
+								/>
+								NONE
+							</label>
+						</div>
 					</div>
 					<div className="grid row-span-2 space-y-2">
 						<button
