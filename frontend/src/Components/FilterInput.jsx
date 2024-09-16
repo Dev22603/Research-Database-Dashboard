@@ -7,10 +7,15 @@ function FilterInput({ onFilterChange }) {
 		authorName: "",
 		impactFactorMin: 0,
 		impactFactorMax: 0.1,
+		filterOption: "", // Stores the selected radio option
 	});
 
 	const handleInputChange = (e) => {
 		const { name, value } = e.target;
+		const processedValue =
+			name === "impactFactorMin" || name === "impactFactorMax"
+				? parseFloat(value) || 0 // Convert to float and handle empty values
+				: value;
 		setFilters((prevFilters) => ({
 			...prevFilters,
 			[name]: value,
@@ -29,6 +34,7 @@ function FilterInput({ onFilterChange }) {
 			authorName: "",
 			impactFactorMin: 0,
 			impactFactorMax: 0.1,
+			filterOption: "",
 		});
 
 		onFilterChange({});
@@ -98,11 +104,11 @@ function FilterInput({ onFilterChange }) {
 						<div className="flex flex-col justify-center items-center space-y-2">
 							<input
 								type="number"
-								name="minImpactFactor"
+								name="impactFactorMin"
 								min="0"
 								max="10"
 								step="0.1"
-								value={filters.minImpactFactor}
+								value={filters.impactFactorMin}
 								onChange={handleInputChange}
 								placeholder="Min"
 								className="border p-2 rounded-sm max-w-fit"
@@ -110,11 +116,11 @@ function FilterInput({ onFilterChange }) {
 							{/* <span className="font-semibold">to</span> */}
 							<input
 								type="number"
-								name="maxImpactFactor"
+								name="impactFactorMax"
 								min="0"
 								max="10"
 								step="0.1"
-								value={filters.maxImpactFactor}
+								value={filters.impactFactorMax}
 								onChange={handleInputChange}
 								placeholder="Max"
 								className="border p-2 rounded-sm max-w-fit"

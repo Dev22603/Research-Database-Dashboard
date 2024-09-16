@@ -16,6 +16,7 @@ function Conference() {
 		authorName: "",
 		impactFactorMin: 0,
 		impactFactorMax: 0.1,
+		filterOption: "", // Stores the selected radio option
 	});
 
 	const handleFilter = (newFilter) => {
