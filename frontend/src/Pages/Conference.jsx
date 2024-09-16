@@ -18,6 +18,7 @@ function Conference() {
 	});
 
 	const handleFilter = (newFilter) => {
+		console.log(newFilter);
 		setFilters(newFilter);
 	};
 

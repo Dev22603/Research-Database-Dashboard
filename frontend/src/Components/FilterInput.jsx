@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { fetchConferences } from "../services/api.mjs";
 
 function FilterInput({ onFilterChange }) {
-	// Manage the filter values in one state object
 	const [filters, setFilters] = useState({
 		startDate: "",
 		endDate: "",
@@ -10,36 +8,18 @@ function FilterInput({ onFilterChange }) {
 		impactFactor: 0,
 	});
 
-	const handleChange = (field, value) => {
-		setFilters((prevFilters) => ({
-			...prevFilters,
-			[field]: value,
-		}));
-	};
 	const handleInputChange = (e) => {
 		const { name, value } = e.target;
 		setFilters((prevFilters) => ({
 			...prevFilters,
 			[name]: value,
 		}));
-	}; //This function does same work as previous one but is just implemented in a different way. This is purely for learning purpose
-
+	};
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log(filters)
+		console.log(filters);
 		onFilterChange(filters);
 	};
-	// const handleSubmit = async (e) => {
-	// 	e.preventDefault();
-	// 	try {
-	// 		const response = await fetchConferences(filters);
-	// 		if (onFilterChange) {
-	// 			onFilterChange(response.data);
-	// 		}
-	// 	} catch (error) {
-	// 		console.error("Error fetching conferences:", error);
-	// 	}
-	// };
 
 	const clearFilter = () => {
 		setFilters({
@@ -51,24 +31,11 @@ function FilterInput({ onFilterChange }) {
 
 		onFilterChange({});
 	};
-	// const clearFilter = () => {
-	// 	setFilters({
-	// 		startDate: "",
-	// 		endDate: "",
-	// 		authorName: "",
-	// 		impactFactor: 0,
-	// 	});
-
-	// 	if (onFilterChange) {
-	// 		onFilterChange([]);
-	// 	}
-	// };
 
 	return (
 		<div className="border mt-10 p-4">
 			<form onSubmit={handleSubmit}>
 				<div className="flex flex-wrap space-x-4 justify-center container mx-auto">
-					{/* Start Date */}
 					<div>
 						<label
 							htmlFor="startDate"
@@ -80,12 +47,11 @@ function FilterInput({ onFilterChange }) {
 							type="month"
 							name="startDate"
 							value={filters.startDate}
-							onChange={handleInputChange} // Pass "startDate" to handleChange
+							onChange={handleInputChange}
 							className="border p-2 rounded-sm"
 						/>
 					</div>
 
-					{/* End Date */}
 					<div>
 						<label
 							htmlFor="endDate"
@@ -97,14 +63,11 @@ function FilterInput({ onFilterChange }) {
 							type="month"
 							name="endDate"
 							value={filters.endDate}
-							onChange={(e) =>
-								handleChange("endDate", e.target.value)
-							} // Pass "endDate" to handleChange
+							onChange={handleInputChange} 
 							className="border p-2 rounded-sm"
 						/>
 					</div>
 
-					{/* Author Name */}
 					<div>
 						<label
 							htmlFor="authorName"
@@ -117,14 +80,11 @@ function FilterInput({ onFilterChange }) {
 							name="authorName"
 							placeholder="Author Name"
 							value={filters.authorName}
-							onChange={(e) =>
-								handleChange("authorName", e.target.value)
-							} // Pass "authorName" to handleChange
+							onChange={handleInputChange} 
 							className="border p-2 rounded-sm"
 						/>
 					</div>
 
-					{/* Impact Factor */}
 					<div className="flex justify-between items-center">
 						<label
 							htmlFor="impactFactor"
@@ -139,9 +99,7 @@ function FilterInput({ onFilterChange }) {
 							max="10"
 							step="0.1"
 							value={filters.impactFactor}
-							onChange={(e) =>
-								handleChange("impactFactor", e.target.value)
-							} // Pass "impactFactor" to handleChange
+							onChange={handleInputChange} 
 							className="border p-2 rounded-sm max-w-fit"
 						/>
 						<div className="min-w-6 text-center">
@@ -149,7 +107,6 @@ function FilterInput({ onFilterChange }) {
 						</div>
 					</div>
 
-					{/* Submit and Clear Buttons */}
 					<button
 						type="submit"
 						className="bg-blue-500 text-white p-2"
