@@ -18,7 +18,7 @@ function FilterInput({ onFilterChange }) {
 				: value;
 		setFilters((prevFilters) => ({
 			...prevFilters,
-			[name]: value,
+			[name]: processedValue,
 		}));
 	};
 	const handleSubmit = async (e) => {
