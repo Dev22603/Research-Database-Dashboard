@@ -29,7 +29,7 @@ function Conference() {
 			}
 		};
 		fetchData();
-	};
+	}; //In this branch, there are initially no records displayed
 
 	const setPage = (page) => {
 		setCurrentPage(page);
