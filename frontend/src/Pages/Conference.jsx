@@ -20,7 +20,7 @@ function Conference() {
 	});
 
 	const handleFilter = (newFilter) => {
-		console.log(newFilter);
+		console.log(newFilter,"Conference.jsx handleFilter");
 		setFilters(newFilter);
 	};
 

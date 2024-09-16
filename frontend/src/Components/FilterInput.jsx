@@ -23,7 +23,7 @@ function FilterInput({ onFilterChange }) {
 	};
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		console.log(filters);
+		console.log(filters,"handleSubmit");
 		onFilterChange(filters);
 	};
 
