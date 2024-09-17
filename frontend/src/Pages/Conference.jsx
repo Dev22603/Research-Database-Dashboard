@@ -7,8 +7,13 @@ import FilterInput from "../Components/FilterInput";
 
 function Conference() {
 	const [menu, setMenu] = useState(false);
+	const [displayTable, setDisplayTable] = useState(false);
 	const [currentPage, setCurrentPage] = useState(null);
 	const [data, setData] = useState([]);
+
+	const toggleDisplayTable = () => {
+		setDisplayTable(!displayTable);
+	};
 
 	const [filters, setFilters] = useState({
 		startDate: "",
@@ -20,7 +25,7 @@ function Conference() {
 	});
 
 	const handleFilter = (newFilter) => {
-		console.log(newFilter,"Conference.jsx handleFilter");
+		console.log(newFilter, "Conference.jsx handleFilter");
 		setFilters(newFilter);
 	};
 
@@ -77,11 +82,19 @@ function Conference() {
 						className="bg-gray-50 mr-10"
 					/>
 				)}
-				<div className="flex flex-col">
+				<div className="flex flex-col items-center">
 					<FilterInput onFilterChange={handleFilter} />
-					<div className="container mx-auto p-4 my-10 border">
-						<TableView data={data} />
-					</div>
+					<button
+						onClick={toggleDisplayTable}
+						className="border-2 focus:border-black p-2 bg-slate-400 rounded-[5px] w-max m-4"
+					>
+						Display Records
+					</button>
+					{displayTable && (
+						<div className="container mx-auto p-4 my-10 border">
+							<TableView data={data} />
+						</div>
+					)}
 				</div>
 			</div>
 		</div>
