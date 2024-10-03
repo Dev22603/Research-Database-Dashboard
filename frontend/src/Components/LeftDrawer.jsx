@@ -73,7 +73,7 @@ const categories = [
 
 const LeftDrawer = forwardRef(({ toggleCurrentPage, currentPageName, className }, ref) => {
 	return (
-		<div className={`max-w-64 min-w-64 h-full border z-10 ${className}`} ref={ref}>
+		<div className={`max-w-64 min-w-64 min-h-screen border z-10 ${className}`} ref={ref}>
 			<div className="bg-slate-400 p-2 text-4xl font-bold text-white text-center">
 				Data
 			</div>
